@@ -1,0 +1,28 @@
+-- Advantages of using Global variables
+-You can access the global variable from all the functions or modules in a program
+-It is ideally used for storing "constants" as it helps you keep the consistency.
+-A Global variable is useful when multiple functions are accessing the same data.
+
+
+-- Disadvantages of using Global Variables
+
+-Too many variables declared as global, then they remain in the memory till program execution is completed. This can cause of Out of Memory issue.
+-Data can be modified by any function. Any statement written in the program can change the value of the global variable. This may give unpredictable results in multi-tasking environments.
+-If global variables are discontinued due to code refactoring, you will need to change all the modules where they are called.
+
+
+# Local Scope
+-Variables defined inside a function are in the local scope.
+
+
+Advantages of using Local Variables
+-The use of local variables offer a guarantee that the values of variables will remain intact while the task is running
+-You can give local variables the same name in different functions because they are only recognized by the function they are declared in.
+-Local variables are deleted as soon as any function is over and release the memory space which it occupies.
+-Disadvantages of using Local Variables
+-They have a very limited scope.
+-This isn't necessarily a disadvantage, but if you ever find yourself needing to use that variable in a parent scope, just declare it there. Let's me use the above example to show you what I mean.
+
+If you need to use a variable only inside the
+anotherFunction
+function, just declare it there.
