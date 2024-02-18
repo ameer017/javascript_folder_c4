@@ -12,19 +12,7 @@ function multiply() {
 
 console.log(multiply());
 
-// A nested function example
-function getScore() {
-  const num1 = 2;
-  const num2 = 3;
 
-  function add() {
-    return `${name} scored ${num1 + num2}`;
-  }
-
-  return add();
-}
-
-console.log(getScore());
 
 // Local scope / Function scope ==> Variables defined inside a function are in the local scope.
 const firstFunction = () => {
@@ -35,12 +23,19 @@ const firstFunction = () => {
 // console.log(bean) this will return undefined since we are trying to access a local variable globally
 
 firstFunction();
-// Global Scope
 
-const someFunction = () => {
-  // Local Scope #1
 
-  const anotherFunction = () => {
-    // Local Scope #2
-  };
-};
+// A nested function example
+const someFunction= () => {
+    const name = "DLT Africa"
+    const num1 = 2;
+    const num2 = 3;
+  
+    const otherFunction = () => {
+      return `${name} academy is ${num1 + num2} years old`;
+    }
+  
+    return otherFunction();
+  }
+  
+  console.log(someFunction());
