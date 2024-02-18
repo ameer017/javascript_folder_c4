@@ -25,3 +25,22 @@ function getScore() {
 }
 
 console.log(getScore());
+
+// Local scope / Function scope ==> Variables defined inside a function are in the local scope.
+const firstFunction = () => {
+    const bean = "Janny"
+    console.log(bean);
+}
+
+// console.log(bean) this will return undefined since we are trying to access a local variable globally
+
+firstFunction();
+// Global Scope
+
+const someFunction = () => {
+  // Local Scope #1
+
+  const anotherFunction = () => {
+    // Local Scope #2
+  };
+};
