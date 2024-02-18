@@ -34,4 +34,4 @@ Your feedback is valuable! If you have suggestions, ideas, or feedback on how we
 
 ## License
 
-This repository is licensed under the `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`. Feel free to use, modify, and distribute the content for educational and non-commercial purposes. Please refer to the LICENSE file for more details.
+This repository is licensed under the [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT). Feel free to use, modify, and distribute the content for educational and non-commercial purposes. Please refer to the LICENSE file for more details.
