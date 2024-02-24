@@ -19,7 +19,9 @@
 -The use of local variables offer a guarantee that the values of variables will remain intact while the task is running
 -You can give local variables the same name in different functions because they are only recognized by the function they are declared in.
 -Local variables are deleted as soon as any function is over and release the memory space which it occupies.
--Disadvantages of using Local Variables
+
+
+-- Disadvantages of using Local Variables
 -They have a very limited scope.
 -This isn't necessarily a disadvantage, but if you ever find yourself needing to use that variable in a parent scope, just declare it there. Let's me use the above example to show you what I mean.
 
