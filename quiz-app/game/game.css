@@ -25,11 +25,26 @@
   width: 100%;
 }
 
-
 .correct {
   background-color: #28a745;
 }
 
 .incorrect {
   background-color: #dc3545;
+}
+
+/* HUD */
+#hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hud-prefix {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.hud-main-text {
+  text-align: center;
 }
