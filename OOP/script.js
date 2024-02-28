@@ -133,7 +133,7 @@ const cohort3 = new Cohort(
 // =============== Class ==============
 // A Class is a schema for an object that can save many values, and just as you can define function expressions and function declarations, a class can be defined in two ways: a class declaration or a class expression.
 // Declaration
-class Rectangle {
+class Shape1 {
   constructor(height, width) {
     this.height = height;
     this.width = width;
@@ -141,7 +141,7 @@ class Rectangle {
   }
 }
 
-const $_ = new Rectangle(10, 12);
+const $_ = new Shape1(10, 12);
 
 // Expression; there are two ways to write class expression 1--> the class is anonymous but assigned to a variable
 const Shape = class {
@@ -152,6 +152,27 @@ const Shape = class {
 };
 
 // Expression; the class has its own name
+const BigBoy = class Bigie {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  // getter
+  get him() {
+    return this.coder();
+  }
+
+  // method
+  coder() {
+    return { name: this.name, age: this.age };
+  }
+};
+
+const instance = new BigBoy("Paiko", 40);
+console.log(instance.him);
+
+// with an unanonymous class function expression named RectShape, create a constructor with params (height & width), get the area of a rectangle using getter and calculate method, create a new instance for the RectShape with its relative arguments.. answer should be displayed in the console.
 const RectShape = class Rectangle2 {
   constructor(height, width) {
     this.height = height;
@@ -172,25 +193,6 @@ const square = new RectShape(10, 10);
 
 console.log(square.area);
 
-const BigBoy = class Bigie {
-  constructor(age) {
-    this.age = age;
-  }
-
-  // getter
-  get him() {
-    return this.coder();
-  }
-
-  // method
-  coder() {
-    return this.age;
-  }
-};
-
-const instance = new BigBoy(40);
-console.log(instance.him);
-
 class Person {
   constructor(name, age, working) {
     this.name = name;
@@ -202,3 +204,61 @@ class Person {
 let user = new Person("John", 24, true);
 
 console.log(user);
+
+// Difference between CONST & CLASS
+// const can only create one object.
+
+// const detailOne = {
+//   name: 'Bashirat',
+//   age: 360,
+//   isBlack: false
+// }
+
+// const detailTwo = {
+//   name: 'Oloye',
+//   age: 460,
+//   isBlack: true
+// }
+
+// const detailThree = {
+//   name: 'Kenny',
+//   age: 560,
+//   isBlack: false
+// }
+
+// const detailFour = {
+//   name: 'Zainabu',
+//   age: 660,
+//   isBlack: false
+// }
+
+// const getDetailOne = new detailOne()
+// console.log(getDetailOne)
+
+class Detail {
+  constructor(name, age, isBlack) {
+    this.name = name;
+    this.age = age;
+    this.isBlack = isBlack;
+  }
+}
+
+const detailOne = new Detail("Bashirat", 360, false);
+const detailTwo = new Detail("Oloye", 460, true);
+const detailThree = new Detail("Kenny", 560, false);
+const detailFour = new Detail("Zainabu", 660, false);
+
+// We can do the same thing we did up there using normal function
+const createPerson = (name, age, isPretty) => {
+  const userSchema = {
+    name,
+    age,
+    isPretty,
+  };
+  return userSchema;
+
+  // return {name, age, isPretty} without creating the userSchema object
+};
+
+const personCreated = createPerson("Melissa", 20, true);
+console.log(personCreated);
