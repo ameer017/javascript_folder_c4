@@ -247,6 +247,7 @@ const detailOne = new Detail("Bashirat", 360, false);
 const detailTwo = new Detail("Oloye", 460, true);
 const detailThree = new Detail("Kenny", 560, false);
 const detailFour = new Detail("Zainabu", 660, false);
+console.log([detailOne, detailTwo, detailThree, detailFour]);
 
 // We can do the same thing we did up there using normal function
 const createPerson = (name, age, isPretty) => {
@@ -262,3 +263,55 @@ const createPerson = (name, age, isPretty) => {
 
 const personCreated = createPerson("Melissa", 20, true);
 console.log(personCreated);
+
+//*********************INHERITANCE************** Inheritance in JavaScript is defined as the ability of a class to derive properties and characteristics from another class while having its own properties as well.
+class Animal {
+  alive = true;
+
+  isbeautiful = `This is beautiful`;
+
+  eat() {
+    console.log(`This ${this.name} can eat`);
+  }
+
+  sleep() {
+    console.log(`This ${this.name} can sleep`);
+  }
+}
+
+class Rabbit extends Animal {
+  name = "rabbit";
+
+  run() {
+    console.log(`This ${this.name} can run`);
+  }
+}
+
+class Fish extends Animal {
+  name = "fish";
+
+  swim() {
+    console.log(`This ${this.name} can swim`);
+  }
+}
+
+class Goat extends Animal {
+  name = "Ewure";
+
+  jump() {
+    console.log(`This ${this.name} can jump`);
+  }
+}
+
+const goat = new Goat();
+const rabbit = new Rabbit();
+
+console.log(goat);
+console.log(goat.name);
+goat.jump();
+goat.eat();
+goat.sleep();
+
+console.log(rabbit);
+console.log(rabbit.name);
+rabbit.eat();
