@@ -12,7 +12,16 @@ let questionCounter = 0;
 let availableQuestions = [];
 let questions = [];
 
-fetch("questions.json").then(res => {})
+fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple")
+  .then((res) => {
+    return res.json();
+  })
+  .then((loadingQuestions) => {
+    questions = loadingQuestions
+    startGame()
+  }).catch(err => {
+    console.log(err)
+  })
 
 // constants
 const CORRECT_BONUS = 10;
@@ -79,4 +88,4 @@ incrementScore = (num) => {
   scoreText.innerText = score;
 };
 
-startGame();
+// startGame(); //this function should be here till the fetch method is used.
