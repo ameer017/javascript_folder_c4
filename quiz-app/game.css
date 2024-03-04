@@ -57,7 +57,21 @@
 }
 
 #progressBarFull {
-  height: 3.6rem;
+  height: 3.7rem;
   background-color: #56a5eb;
   width: 0%;
+}
+
+
+/* loader */
+#loader {
+  border: 1.6rem solid white;
+  border-top: 1.6rem solid #56a5eb;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
