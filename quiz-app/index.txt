@@ -1,0 +1,14 @@
+Steps.
+Introduction and resources.
+Create and style home page.
+Create and style game page.
+Display hard coded questions and answers
+Display feedback fro correct/incorrect answers.
+Create Heads up displays (HUD).
+Create a progress bar
+Create and style the end page.
+Save highscores in local storage.
+Load and display highscores from local storage.
+Fetch api to load question from local json file
+Fetch api to load question from external api.
+Create spinning loader.
