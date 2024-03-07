@@ -50,15 +50,16 @@ fetch(
 
 // constants
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
+const MAX_QUESTIONS = 7;
 
 startGame = () => {
   questionCounter = 0;
   score = 0;
   availableQuestions = [...questions];
   // console.log(availableQuestions);
+  //
+    loader.classList.add("hidden");
   game.classList.remove("hidden");
-  loader.classList.add("hidden");
   getNewQuestion();
 };
 

@@ -26,7 +26,7 @@ const saveHighScore = () => {
   console.log(highScores)
 
   localStorage.setItem('highScores', JSON.stringify(highScores));
-  window.location.assign("../quiz-app/index.html")
+  window.location.assign("./index.html")
 };
 
 saveScoreBtn.addEventListener("click", (event) => {
