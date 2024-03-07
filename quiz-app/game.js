@@ -42,7 +42,6 @@ fetch(
       return formattedQuestion;
     });
 
-
     startGame();
   })
   .catch((err) => {
@@ -58,9 +57,9 @@ startGame = () => {
   score = 0;
   availableQuestions = [...questions];
   // console.log(availableQuestions);
-  getNewQuestion();
   game.classList.remove("hidden");
   loader.classList.add("hidden");
+  getNewQuestion();
 };
 
 getNewQuestion = () => {
