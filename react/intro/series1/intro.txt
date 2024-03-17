@@ -29,3 +29,59 @@ your-react-app/
 Do the clean up --> run the app with npm start.
 Duplicate the p element in app.jsx to see changes.
 Press ctrl + c to stop the app
+
+modern react uses functional component, class component were used before and an example is:
+
+// Filename - App.js
+
+import React from "react";
+
+class App extends React.Component {
+constructor(props) {
+	super(props);
+	this.state = { change: true };
+}
+render() {
+	return (
+	<div>
+		<button
+		onClick={() => {
+			this.setState({ change: !this.state.change });
+		}}
+		>
+		Click Here!
+		</button>
+		{this.state.change ? (
+		<h1>Welcome to DLT Africa</h1>
+		) : (
+		<h1>A Computer Programming Academy for Gurus</h1>
+		)}
+	</div>
+	);
+}
+}
+
+export default App;
+
+
+JSX stands for JavaScript XML. It's a syntax extension for JavaScript that allows you to write HTML-like code within JavaScript. JSX makes it easier to write and understand React components by combining JavaScript logic with HTML-like syntax.
+
+Here's a simple example of JSX:
+
+jsx
+Copy code
+const element = <h1>Hello, JSX!</h1>;
+In this example:
+
+<h1>Hello, JSX!</h1> looks like HTML, but it's actually JSX.
+The JSX syntax allows us to create a React element representing an <h1> heading with the text "Hello, JSX!".
+This JSX code gets transpiled into regular JavaScript function calls by tools like Babel before it's executed by the browser.
+JSX allows you to embed JavaScript expressions within curly braces {}. This allows you to dynamically generate content based on variables or other JavaScript logic. For example:
+
+jsx
+Copy code
+const name = "John";
+const element = <h1>Hello, {name}!</h1>;
+In this example, the variable name is interpolated into the JSX expression, resulting in the text "Hello, John!".
+
+JSX is one of the key features of React, and it's widely used in React development for defining component UIs in a more intuitive and expressive way.
