@@ -1,0 +1,27 @@
+install node (check node version with node -v) --> visit store.chrome.web to add react dev tools as a chrome extension.
+create a new folder --> open in vs code --> create react app {npx create-react-app <react-project-name> || npm create vite@latest <project-name>}
+click the extension icon --> search for es7 React.... and then install --> click on settings and search for emmet --> locate Emmet:include Languages and add {javascript: javascriptreact} to bring suggestions.
+
+your-react-app/
+├── node_modules/         // Dependencies installed by npm or yarn
+├── public/               // Public assets
+│   ├── index.html        // Main HTML file
+│   ├── favicon.ico       // Favicon
+│   └── ...               // Other static assets
+├── src/                  // Source code
+│   ├── components/       // React components
+│   │   ├── Component1.js // Example component
+│   │   ├── Component2.js // Example component
+│   │   └── ...
+│   ├── pages/            // React pages (optional, for multi-page applications)
+│   │   ├── Home.js       // Example page component
+│   │   ├── About.js      // Example page component
+│   │   └── ...
+│   ├── App.css           // Global styles
+│   ├── App.js            // Root component
+│   ├── index.css         // Global CSS
+│   └── index.js          // Entry point
+├── .gitignore            // Files and directories ignored by git
+├── package.json          // Project metadata and dependencies
+├── README.md             // Project README file
+└── ...                   // Other configuration files, such as .babelrc, .eslintrc, etc.
