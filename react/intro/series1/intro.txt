@@ -38,15 +38,15 @@ import React from "react";
 
 class App extends React.Component {
 constructor(props) {
-	super(props);
-	this.state = { change: true };
+	super(props)                                       ;
+	this.state = { change: true }                      ;
 }
 render() {
 	return (
 	<div>
 		<button
 		onClick={() => {
-			this.setState({ change: !this.state.change });
+			this.setState({ change: !this.state.change })    ;
 		}}
 		>
 		Click Here!
@@ -57,12 +57,11 @@ render() {
 		<h1>A Computer Programming Academy for Gurus</h1>
 		)}
 	</div>
-	);
+	)                                                  ;
 }
 }
 
-export default App;
-
+export default App ;
 
 JSX stands for JavaScript XML. It's a syntax extension for JavaScript that allows you to write HTML-like code within JavaScript. JSX makes it easier to write and understand React components by combining JavaScript logic with HTML-like syntax.
 
@@ -70,7 +69,7 @@ Here's a simple example of JSX:
 
 jsx
 Copy code
-const element = <h1>Hello, JSX!</h1>;
+const element = <h1>Hello, JSX!</h1> ;
 In this example:
 
 <h1>Hello, JSX!</h1> looks like HTML, but it's actually JSX.
@@ -81,7 +80,46 @@ JSX allows you to embed JavaScript expressions within curly braces {}. This allo
 jsx
 Copy code
 const name = "John";
-const element = <h1>Hello, {name}!</h1>;
+const element = <h1>Hello, {name}!</h1>                                                                           ;
 In this example, the variable name is interpolated into the JSX expression, resulting in the text "Hello, John!".
 
 JSX is one of the key features of React, and it's widely used in React development for defining component UIs in a more intuitive and expressive way.
+
+function to make the nmae change after a specified time:
+
+import { useState, useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+function App() {
+const [randomName, setRandomName] = useState(null) ;
+
+// Function to handle random name change
+const handleNameChange = () => {
+const names = ["Hayzed", "Nafisah", "Oloye"];
+const randomIndex = Math.floor(Math.random() * names.length) ;
+return names[randomIndex]                                    ;
+}                                                            ;
+
+useEffect(() => {
+// Set a new random name after 2 seconds
+const timeoutId = setTimeout(() => {
+const newName = handleNameChange()       ;
+setRandomName(newName)                   ;
+}, 2000)                                 ;
+
+// Clean up the timeout
+return () => clearTimeout(timeoutId) ;
+}, [])                               ; // Empty dependency array to run effect only once on component mount
+
+return (
+<div className="App">
+<header className="App-header">
+<img src={logo} className="App-logo" alt="logo" />
+<p>Hello {randomName ? randomName : "Loading"}!</p>
+</header>
+</div>
+)                                                   ;
+}
+
+export default App ;

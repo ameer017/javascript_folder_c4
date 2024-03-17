@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  // const name = "Zainabuu";
+  // let's declare a function to handle random name change
+
+  const handleNameChange = () => {
+    const names = ['Hayzed', 'Nafisah', 'Oloye'];
+    const int = Math.floor(Math.random() * 3);
+    return names[int]
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {/* Hello {name}! */}
+          Hello {handleNameChange()}
         </p>
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p> */}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
+
+        {/* {"Zainab"} */}
+        {/* {1} */}
+        {/* <p>[1, 2, 3]</p> */}
+        {/* <p>{2 === 4}</p> will not render a bool */}
+        {/* <p> {name} </p> */}
       </header>
     </div>
   );
