@@ -1,0 +1,3 @@
+install node (check node version with node -v) --> visit store.chrome.web to add react dev tools as a chrome extension.
+create a new folder --> open in vs code --> create react app {npx create-react-app <react-project-name> || npm create vite@latest <project-name>}
+click the extension icon --> search for es7 React.... and then install --> click on settings and search for emmet
