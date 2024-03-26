@@ -6,17 +6,21 @@ import Square from "./Square";
 function App() {
   const [colorValue, setColorValue] = useState("");
   const [hexValue, setHexValue] = useState("");
-  const [isDarktext, setIsDarktext] = useState(true);
-
+  const [isDarkText, setIsDarkText] = useState(true); // Corrected variable name
 
   return (
     <div className="App">
-      <Square colorValue={colorValue} hexValue={hexValue} isDarktext={isDarktext} />
+      <Square
+        colorValue={colorValue}
+        hexValue={hexValue}
+        isDarkText={isDarkText}
+      />
       <Input
         colorValue={colorValue}
         setColorValue={setColorValue}
         setHexValue={setHexValue}
-        setIsDarktext={setIsDarktext}
+        isDarkText={isDarkText}
+        setIsDarkText={setIsDarkText}
       />
     </div>
   );

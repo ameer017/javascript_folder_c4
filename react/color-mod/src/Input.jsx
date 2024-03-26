@@ -5,7 +5,7 @@ const Input = ({
   setColorValue,
   setHexValue,
   isDarkText,
-  setIsDarktext,
+  setIsDarkText,
 }) => {
   return (
     <form onSubmit={(e) => e.preventDefault()}>
@@ -21,7 +21,8 @@ const Input = ({
         }}
       />
 
-      <button onClick={() => setIsDarktext(!isDarkText)}>
+      <button onClick={() => setIsDarkText(!isDarkText)}>
+        {" "}
         Toggle Text Color
       </button>
     </form>
