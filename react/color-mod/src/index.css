@@ -25,9 +25,11 @@ body {
 }
 
 .square {
+  background-color: #0000000c;
   width: 400px;
   height: 400px;
   display: grid;
+  border: 1px dashed black;
   box-shadow: 2px 2px 5px #365364;
   place-content: center;
   border-radius: 0.25rem;
