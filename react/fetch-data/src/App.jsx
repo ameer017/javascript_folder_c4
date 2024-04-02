@@ -27,7 +27,9 @@ function App() {
   return (
     <div className="App">
       <Form reqType={reqType} setReqType={setReqType} />
-      {/* <List items={items} /> */}
+      {/* <List items={items} /> make use of this before populating into the table*/}
+
+      {/* challenge number two is to change it from mere list to table */}
       <Table items={items} />
     </div>
   );
