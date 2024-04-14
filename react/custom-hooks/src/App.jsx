@@ -127,7 +127,16 @@ function App() {
         {/* <Route path="/" element={<Home posts={posts} />} /> */}
 
         {/* Step 3 */}
-        <Route path="/" element={<Home posts={searchResults} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              posts={searchResults}
+              fetchError={fetchError}
+              isLoading={isLoading}
+            />
+          }
+        />
 
         {/* Step 1*/}
         <Route
