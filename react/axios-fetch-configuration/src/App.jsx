@@ -8,65 +8,66 @@ import Nav from "./Nav";
 import NewPost from "./NewPost";
 import Postpage from "./PostPage";
 import { useState, useEffect } from "react";
-import { format } from 'date-fns';
-import api from "./api/post"
+import { format } from "date-fns";
+import api from "./api/post";
 
 function App() {
-  const [posts, setPosts] = useState([ ]);
-  
-  const navigate = useNavigate()
+  const [posts, setPosts] = useState([]);
+
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [postTitle, setPostTitle] = useState('');
-  const [postBody, setPostBody] = useState('');
+  const [postTitle, setPostTitle] = useState("");
+  const [postBody, setPostBody] = useState("");
 
   //STEP 1
   useEffect(() => {
+    //we are using useEffect hooks so that the function will take effect as soon as the page loads
     const fetchPosts = async () => {
       try {
-        const response = await api.get('/posts');
-        setPosts(response.data)
-      }catch (err) {
+        // const response = await axios.get("/endpoint")
+        const response = await api.get("/posts"); //axios returns results in json format automatically, so we don't need to convert the response to json format
+        setPosts(response.data); //setPosts array updated
+      } catch (err) {
         if (err.response) {
-          // Not in the 200 response range 
+          // Not in the 200 response range
           console.log(err.response.data);
           console.log(err.response.status);
           console.log(err.response.headers);
         } else {
           console.log(`Error: ${err.message}`);
         }
-      }  
-    }
-
-     
-  }, [])
+      }
+    };
+  }, []);
 
   useEffect(() => {
-    const filteredResults = posts.filter((post) =>
-      ((post.body).toLowerCase()).includes(search.toLowerCase())
-      || ((post.title).toLowerCase()).includes(search.toLowerCase()));
+    const filteredResults = posts.filter(
+      (post) =>
+        post.body.toLowerCase().includes(search.toLowerCase()) ||
+        post.title.toLowerCase().includes(search.toLowerCase())
+    );
 
     setSearchResults(filteredResults.reverse());
-  }, [posts, search])
+  }, [posts, search]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-    const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+    const datetime = format(new Date(), "MMMM dd, yyyy pp");
     const newPost = { id, title: postTitle, datetime, body: postBody };
     const allPosts = [...posts, newPost];
     setPosts(allPosts);
-    setPostTitle('');
-    setPostBody('');
+    setPostTitle("");
+    setPostBody("");
     // history.push('/');
-    navigate('/')
-  }
-
+    navigate("/");
+  };
 
   const handleDelete = (id) => {
-    const postList = posts.filter(post => post.id !== id)
-    setPosts(postList)
-     navigate('/')
+    const postList = posts.filter((post) => post.id !== id);
+    setPosts(postList);
+    navigate("/");
   };
 
   return (
@@ -80,12 +81,18 @@ function App() {
         <Route path="/" element={<Home posts={searchResults} />} />
 
         {/* Step 1*/}
-        <Route path="/post" element={<NewPost 
-         handleSubmit={handleSubmit}
-         postTitle={postTitle}
-         setPostTitle={setPostTitle}
-         postBody={postBody}
-         setPostBody={setPostBody}/>} />
+        <Route
+          path="/post"
+          element={
+            <NewPost
+              handleSubmit={handleSubmit}
+              postTitle={postTitle}
+              setPostTitle={setPostTitle}
+              postBody={postBody}
+              setPostBody={setPostBody}
+            />
+          }
+        />
 
         <Route
           path="/post/:id"
