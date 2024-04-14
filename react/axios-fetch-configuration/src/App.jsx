@@ -10,6 +10,7 @@ import PostPage from "./PostPage";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import api from "./api/post";
+import EditPost from "./EditPost";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -101,7 +102,7 @@ function App() {
       );
       setEditPostTitle("");
       setEditPostBody("");
-      navigate("/")
+      navigate("/");
     } catch (error) {
       console.log(`Error: ${error.message}`);
     }
@@ -127,6 +128,20 @@ function App() {
               setPostTitle={setPostTitle}
               postBody={postBody}
               setPostBody={setPostBody}
+            />
+          }
+        />
+
+        <Route
+          path="/edit/:id"
+          element={
+            <EditPost
+              posts={posts}
+              handleEdit={handleEdit}
+              editPostTitle={editPostTitle}
+              setEditPostTitle={setEditPostTitle}
+              editPostBody={editPostBody}
+              setEditPostBody={setEditPostBody}
             />
           }
         />
