@@ -74,9 +74,14 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    const postList = posts.filter((post) => post.id !== id);
-    setPosts(postList);
-    navigate("/");
+    try {
+      await api.delete(`/posts/${id}`);
+      const postList = posts.filter((post) => post.id !== id);
+      setPosts(postList);
+      navigate("/");
+    } catch (error) {
+      console.log(`Error: ${error.message}`);
+    }
   };
 
   return (
