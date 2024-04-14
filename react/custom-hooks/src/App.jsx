@@ -63,7 +63,7 @@ function App() {
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
     const dateTime = format(new Date(), "MMMM dd, yyyy pp");
     const newPost = { id, title: postTitle, dateTime, body: postBody };
-    //1. tryCatch block and refactor
+    // 1. tryCatch block and refactor
     try {
       const response = await api.post("/posts", newPost);
       const allPosts = [...posts, response.data];
@@ -111,7 +111,7 @@ function App() {
   return (
     <div className="App">
       <Header title="DLT Blogs" />
-      <Nav search={search} setsearch={setSearch} />
+      <Nav search={search} setSearch={setSearch} />
       <Routes>
         {/* <Route path="/" element={<Home posts={posts} />} /> */}
 
