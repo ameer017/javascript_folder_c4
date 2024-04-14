@@ -9,7 +9,7 @@ import NewPost from "./NewPost";
 import Postpage from "./PostPage";
 import { useState, useEffect } from "react";
 import { format } from 'date-fns';
-import api from './api/posts'
+import api from "./api/post"
 
 function App() {
   const [posts, setPosts] = useState([ ]);
