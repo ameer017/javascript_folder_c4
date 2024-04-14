@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-const Postpage = ({ posts, handleDelete }) => {
+const PostPage = ({ posts, handleDelete }) => {
   const { id } = useParams();
   const post = posts.find((post) => post.id.toString() === id);
   return (
@@ -29,4 +29,4 @@ const Postpage = ({ posts, handleDelete }) => {
   );
 };
 
-export default Postpage;
+export default PostPage;

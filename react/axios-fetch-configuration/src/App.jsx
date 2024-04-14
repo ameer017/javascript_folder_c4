@@ -6,7 +6,7 @@ import Home from "./Home";
 import Missing from "./Missing";
 import Nav from "./Nav";
 import NewPost from "./NewPost";
-import Postpage from "./PostPage";
+import PostPage from "./PostPage";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import api from "./api/post";
@@ -27,6 +27,9 @@ function App() {
       try {
         // const response = await axios.get("/endpoint")
         const response = await api.get("/posts"); //axios returns results in json format automatically, so we don't need to convert the response to json format
+        // {response = {
+        // data : {}
+        // }}
         setPosts(response.data); //setPosts array updated
       } catch (err) {
         if (err.response) {
@@ -39,6 +42,7 @@ function App() {
         }
       }
     };
+    fetchPosts();
   }, []);
 
   useEffect(() => {
@@ -51,20 +55,25 @@ function App() {
     setSearchResults(filteredResults.reverse());
   }, [posts, search]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-    const datetime = format(new Date(), "MMMM dd, yyyy pp");
-    const newPost = { id, title: postTitle, datetime, body: postBody };
-    const allPosts = [...posts, newPost];
-    setPosts(allPosts);
-    setPostTitle("");
-    setPostBody("");
-    // history.push('/');
-    navigate("/");
+    const dateTime = format(new Date(), "MMMM dd, yyyy pp");
+    const newPost = { id, title: postTitle, dateTime, body: postBody };
+    //1. tryCatch block and refactor
+    try {
+      const response = await api.post("/posts", newPost);
+      const allPosts = [...posts, response.data];
+      setPosts(allPosts);
+      setPostTitle("");
+      setPostBody("");
+      navigate("/");
+    } catch (error) {
+      console.log(`Error: ${error.message}`);
+    }
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const postList = posts.filter((post) => post.id !== id);
     setPosts(postList);
     navigate("/");
@@ -96,7 +105,7 @@ function App() {
 
         <Route
           path="/post/:id"
-          element={<Postpage posts={posts} handleDelete={handleDelete} />}
+          element={<PostPage posts={posts} handleDelete={handleDelete} />}
         />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Missing />} />
