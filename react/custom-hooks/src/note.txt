@@ -27,3 +27,37 @@ Don’t call Hooks from regular JavaScript functions. Instead, you can:
 ✅ Call Hooks from React function components.
 ✅ Call Hooks from custom Hooks (we’ll learn about them on the next page).
 By following this rule, you ensure that all stateful logic in a component is clearly visible from its source code.
+
+useAxiosFetch:
+
+This code snippet defines a custom React hook called useAxiosFetch, which encapsulates data fetching functionality using the Axios library. Let's break down how the hook works:
+
+useState:
+
+The hook initializes three state variables using the useState hook:
+data: Stores the fetched data from the API endpoint.
+fetchError: Stores any error that occurs during the data fetching process.
+isLoading: Tracks the loading state of the data fetching process.
+useEffect:
+
+The hook uses the useEffect hook to perform side effects, such as fetching data from the API.
+It takes the dataUrl as a dependency, so whenever the dataUrl changes, the effect is re-executed.
+Inside the effect, it initializes a variable isMounted to track whether the component is still mounted.
+It creates a cancel token using Axios to handle cancellation of requests if the component is unmounted before the request completes.
+fetchData Function:
+
+The fetchData function is defined within the effect and is responsible for fetching data from the specified URL.
+It sets isLoading to true to indicate that data fetching is in progress.
+It makes an HTTP GET request to the dataUrl using Axios.
+If the request is successful, it updates the data state with the response data and clears any previous fetch errors.
+If an error occurs during the request, it updates the fetchError state with the error message and resets the data state.
+Finally, it sets isLoading to false to indicate that data fetching is complete.
+Cleanup Function:
+
+The effect returns a cleanup function that runs when the component unmounts.
+This function sets the isMounted variable to false to indicate that the component is no longer mounted.
+It also cancels the Axios request using the cancel token to prevent memory leaks.
+Return Statement:
+
+The hook returns an object containing the data, fetchError, and isLoading states, which can be accessed by components using the hook.
+Overall, this custom hook provides a reusable way to fetch data from an API endpoint using Axios while handling loading states and errors gracefully. It also ensures that requests are canceled when the component is unmounted to prevent potential memory leaks.

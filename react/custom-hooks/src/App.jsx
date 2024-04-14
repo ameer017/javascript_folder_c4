@@ -12,6 +12,7 @@ import { format } from "date-fns";
 import api from "./api/post";
 import EditPost from "./EditPost";
 import useWindowSize from "./hooks/useWindowSize";
+import useAxiosFetch from "./hooks/useAxiosFetch";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -26,29 +27,37 @@ function App() {
   const { width } = useWindowSize();
 
   //STEP 1
+  // useEffect(() => {
+  //   //we are using useEffect hooks so that the function will take effect as soon as the page loads
+  //   const fetchPosts = async () => {
+  //     try {
+  //       // const response = await axios.get("/endpoint")
+  //       const response = await api.get("/posts"); //axios returns results in json format automatically, so we don't need to convert the response to json format
+  //       // {response = {
+  //       // data : {}
+  //       // }}
+  //       setPosts(response.data); //setPosts array updated
+  //     } catch (err) {
+  //       if (err.response) {
+  //         // Not in the 200 response range
+  //         console.log(err.response.data);
+  //         console.log(err.response.status);
+  //         console.log(err.response.headers);
+  //       } else {
+  //         console.log(`Error: ${err.message}`);
+  //       }
+  //     }
+  //   };
+  //   fetchPosts();
+  // }, []);
+
+  const { data, fetchError, isLoading } = useAxiosFetch(
+    "http://localhost:3500/posts"
+  );
+
   useEffect(() => {
-    //we are using useEffect hooks so that the function will take effect as soon as the page loads
-    const fetchPosts = async () => {
-      try {
-        // const response = await axios.get("/endpoint")
-        const response = await api.get("/posts"); //axios returns results in json format automatically, so we don't need to convert the response to json format
-        // {response = {
-        // data : {}
-        // }}
-        setPosts(response.data); //setPosts array updated
-      } catch (err) {
-        if (err.response) {
-          // Not in the 200 response range
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else {
-          console.log(`Error: ${err.message}`);
-        }
-      }
-    };
-    fetchPosts();
-  }, []);
+    setPosts(data);
+  }, [data]);
 
   useEffect(() => {
     const filteredResults = posts.filter(
@@ -112,7 +121,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header title="DLT Blogs"  width={width}/>
+      <Header title="DLT Blogs" width={width} />
       <Nav search={search} setSearch={setSearch} />
       <Routes>
         {/* <Route path="/" element={<Home posts={posts} />} /> */}
