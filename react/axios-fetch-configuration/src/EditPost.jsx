@@ -46,6 +46,17 @@ const EditPost = ({
           </form>
         </>
       )}
+
+      {!editPostTitle && (
+        <>
+          <h2>Post Not Found!</h2>
+          <p>Well, That&apos;s Disappointing!</p>
+
+          <p>
+            <Link to="/">Visit Our Homepage</Link>
+          </p>
+        </>
+      )}
     </main>
   );
 };
