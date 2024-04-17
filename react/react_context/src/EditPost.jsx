@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import api from "./api/post";
 import DataContext from "../context/DataContext";
-
+import { format } from "date-fns";
 
 const EditPost = () => {
-  const [editPostPostTitle, setEditPostTitle] = useState('');
-  const [editPostBody, setEditPostBody] = useState('')
+  const [editPostTitle, setEditPostTitle] = useState("");
+  const [editPostBody, setEditPostBody] = useState("");
   const { posts, setPosts } = useContext(DataContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { id } = useParams();
   const post = posts.find((post) => post.id.toString() === id);
@@ -22,7 +22,12 @@ const EditPost = () => {
 
   const handleEdit = async (id) => {
     const datetime = format(new Date(), "MMMM dd, yyyy pp");
-    const updatedPost = { id, title: editTitle, datetime, body: editBody };
+    const updatedPost = {
+      id,
+      title: editPostTitle,
+      datetime,
+      body: editPostBody,
+    };
     try {
       const response = await api.put(`/posts/${id}`, updatedPost);
       setPosts(
