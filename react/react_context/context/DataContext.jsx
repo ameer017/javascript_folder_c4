@@ -1,9 +1,12 @@
+// We are using this particularly to avoid and get rid of major props drilling in our app
+
 import { createContext, useState, useEffect } from "react";
 import useAxiosFetch from "../hooks/useAxiosFetch";
 
 const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
+  //children refers to all components wrapped inside the context provider
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -29,6 +32,7 @@ export const DataProvider = ({ children }) => {
   return (
     <DataContext.Provider
       value={{
+        //This value will hold all the props value that is being passed formerly, so DataContext will allow us to access them directly
         search,
         setSearch,
         searchResults,
@@ -44,3 +48,4 @@ export const DataProvider = ({ children }) => {
 };
 
 export default DataContext;
+//after exporting it here, import it inside app.jsx and wrap around the routes bar header and footer 

@@ -34,3 +34,5 @@ function App() {
 }
 
 export default App;
+
+//DataProvider supplies the data context to all the routes perfectly without having to request it individually in the components being rendered
