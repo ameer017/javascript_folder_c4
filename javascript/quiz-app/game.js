@@ -30,7 +30,7 @@ fetch(
       const answerChoices = [...loadingQuestion.incorrect_answers];
       formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
       answerChoices.splice(
-        formattedQuestion.question - 1,
+        formattedQuestion.answer - 1,
         0,
         loadingQuestion.correct_answer
       );
